@@ -32,7 +32,7 @@ void AMovingPlatform::Tick(float DeltaTime)
 	if (Distance >= DesiredDistance || Distance <= -DesiredDistance)
 	{
 		//Reversing vel
-		PlatformVelocity.X *= -1;
+		PlatformVelocity *= -1;
 	}
 
 }
