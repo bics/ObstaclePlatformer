@@ -16,6 +16,8 @@ void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
 	StartLocation = GetActorLocation();
+
+	UE_LOG(LogTemp, Display, TEXT("Start position for object: %s"), *StartLocation.ToString());
 }
 
 // Called every frame
@@ -27,10 +29,11 @@ void AMovingPlatform::Tick(float DeltaTime)
 	PlatformLocation += PlatformVelocity * DeltaTime;
 	SetActorLocation(PlatformLocation);
 
-	Distance = FVector::Dist(StartLocation, PlatformLocation);
+	Distance = FVector::Dist(StartLocation, PlatformLocation.GetSafeNormal());
 
 	if (Distance >= DesiredDistance || Distance <= -DesiredDistance)
 	{
+		UE_LOG(LogTemp, Display, TEXT("End position for object: %f"), Distance);
 		//Reversing vel
 		PlatformVelocity *= -1;
 	}
