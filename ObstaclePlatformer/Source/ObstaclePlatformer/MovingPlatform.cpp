@@ -38,7 +38,7 @@ void AMovingPlatform::MovePlatform(float DeltaTime)
 	PlatformLocation += PlatformVelocity * DeltaTime;
 	SetActorLocation(PlatformLocation);
 
-	Distance = FVector::Dist(StartLocation, PlatformLocation.GetSafeNormal());
+	Distance = FVector::Dist(StartLocation, PlatformLocation);
 
 	if (Distance >= DesiredDistance || Distance <= -DesiredDistance)
 	{
@@ -51,8 +51,6 @@ void AMovingPlatform::MovePlatform(float DeltaTime)
 
 void AMovingPlatform::RotatePlatform(float DeltaTime)
 {
-
-
-
+	AddActorLocalRotation(PlatformRotation * DeltaTime);
 }
 
