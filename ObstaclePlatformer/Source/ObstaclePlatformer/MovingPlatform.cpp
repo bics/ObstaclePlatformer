@@ -25,6 +25,15 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	MovePlatform(DeltaTime);
+	RotatePlatform(DeltaTime);
+	
+
+}
+
+void AMovingPlatform::MovePlatform(float DeltaTime)
+{
+
 	FVector PlatformLocation = GetActorLocation();
 	PlatformLocation += PlatformVelocity * DeltaTime;
 	SetActorLocation(PlatformLocation);
@@ -37,6 +46,13 @@ void AMovingPlatform::Tick(float DeltaTime)
 		//Reversing vel
 		PlatformVelocity *= -1;
 	}
+
+}
+
+void AMovingPlatform::RotatePlatform(float DeltaTime)
+{
+
+
 
 }
 
